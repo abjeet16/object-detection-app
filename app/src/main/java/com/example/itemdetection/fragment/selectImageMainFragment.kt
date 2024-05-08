@@ -13,10 +13,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.itemdetection.R
 import com.example.itemdetection.databinding.FragmentSelectImageBinding
 import com.example.itemdetection.databinding.FragmentSelectImageMainBinding
 import com.example.itemdetection.ml.ObjectDetection
+import com.google.firebase.auth.FirebaseAuth
 import org.tensorflow.lite.support.common.FileUtil
 import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
@@ -29,6 +31,7 @@ class selectImageMainFragment : Fragment() {
     private lateinit var bitmap: Bitmap
     private lateinit var model:ObjectDetection
     private lateinit var lables:List<String>
+    private lateinit var firebaseAuth: FirebaseAuth
     private val imageProcessor = ImageProcessor.Builder().add(ResizeOp(300,300,ResizeOp.ResizeMethod.BILINEAR)).build()
 
 
@@ -37,7 +40,7 @@ class selectImageMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSelectImageMainBinding.inflate(layoutInflater)
-
+        firebaseAuth = FirebaseAuth.getInstance()
 
         lables = FileUtil.loadLabels(requireContext(),"labels.txt")
         val intent = Intent()
@@ -48,6 +51,10 @@ class selectImageMainFragment : Fragment() {
 
         binding.selectImageButton.setOnClickListener {
             startActivityForResult(intent,101)
+        }
+        binding.logout.setOnClickListener {
+            firebaseAuth.signOut()
+            findNavController().navigate(R.id.action_selectImageMainFragment_to_loginFragment)
         }
         return binding.root
     }

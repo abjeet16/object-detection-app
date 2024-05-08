@@ -3,4 +3,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="statusBarColor">#92F388</color>
+    <color name="loginButton">#A9DFBF</color>
+    <color name="color1">#FFDEAD</color>
+    <color name="color2">#FFE4C4</color>
+    <color name="color3">#FFFACD</color>
+    <color name="color4">#87CEEB</color>
+    <color name="color5">#00FFFF</color>
+    <color name="color6">#FFFF00</color>
+    <color name="color7">#EEE8AA</color>
+    <color name="color8">#F5F5DC</color>
+    <color name="color9">#EEE9E9</color>
+    <color name="color10">#00E5EE</color>
+    <color name="color11">#F6E5B1</color>
 </resources>
