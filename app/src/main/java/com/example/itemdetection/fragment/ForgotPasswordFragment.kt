@@ -24,7 +24,7 @@ class ForgotPasswordFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.forgotbackButton.setOnClickListener(){
-
+            findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
         }
         binding.RecoverPasswordButton.setOnClickListener(){
                 v:View->
